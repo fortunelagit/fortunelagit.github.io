@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Bangkit</title>
+    <link rel="stylesheet" href="assets\styles\main.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="#content">Articles</a>
+                </li>
+                <li>
+                    <a href="https://github.com/fortunelagit">Github</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/khaela-fortunela/">Linkedin</a>
+                </li>
+                <li>
+                    <a href="#profile">Profile</a>
+                </li>
+                <li>
+                    <a href="#gallery">Gallery</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="carousel">
+            <div>
+                <div class="carousel-item fade">
+                    <img src="assets\images\carousel-1.jpg" style="object-position: left bottom;"alt="carousel-1">
+                    <div class="caption">
+                        <h1>My name is Khaela Fortunela.</h1>
+                        <h3>A student, developer, and data science and IoT technology enthusiast.</h3>
+                    </div>
+                </div>
+                <div class="carousel-item fade">
+                    <img src="assets\images\carousel-2.jpg" style="object-position: 25% 0;"alt="carousel-2">
+                    <div class="caption">
+                        <h1>You can view my profile here.</h1>
+                        
+                        <a href="https://github.com/fortunelagit" class="button-carousel" >Github</a>
+                        <a href="https://www.linkedin.com/in/khaela-fortunela/" class="button-carousel">Linkedin</a>
+                    </div>
+                </div>
+                <div class="carousel-item fade" >
+                    <img src="assets\images\carousel-3.jpg" style="object-position: 100% 0;" alt="carousel-3">
+                    <div class="caption">
+                        <h1>One of my hobby is photography.</h1>
+                        <h3>The backgrounds I'm using in this carousel is what I took myself. Interested to see more?</h3>
+                    </div>
+                </div>
+                <div class="dot-press">
+                    <span class="dot" onclick="displayThis(1)"></span>
+                    <span class="dot" onclick="displayThis(2)"></span>
+                    <span class="dot" onclick="displayThis(3)"></span>
+                </div>
+                <a class="prev" onclick="displayNext(-1)">&#10094;</a>
+                <a class="next" onclick="displayNext(1)">&#10095;</a>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div id="content" class="item">
+            <h1 class="card">Articles</h1>
+            <article class="card">
+                <h3>Memulai Project Pembuatan Website dengan Laravel Jetstream</h2>
+                <p>Berikut langkah-langkah untuk memulai project dengan framework laravel Jetstream:</p>
+                <ol>
+                    <li>Buka folder <span lang="en" class="code">xampp/htdocs</span>, kemudian jalankan console. (Jika tidak ada console yang mendukung, install dulu GitBash.)</li>
+                    <li>Jalankan perintah <span lang="en" class="code">laravel new project --jet</span> pada console.</li>
+                    <li>Kemudian pilih opsi antara 2 opsi, menggunakan framework Livewire atau Inertia. (Pada tutorial ini disarankan memilih framework Livewire.)</li>
+                    <li>Untuk opsi-opsi selanjutnya, pilih sesuai kebutuhan. Tunggu hingga hasil instalasi selesai.</li>
+                    <li>Setelah instalasi library selesai, project dapat mulai dikerjakan.</li>
+                </ol>
+            </article>
+            <article class="card">
+                <h3>Mengubah Parameter Login dari Jetstream Default Login</h2>
+                <p>Berikut langkah-langkah untuk mengubah parameter login dari Jetstream default login.</p>
+                <div><ol>
+                    <li>Buka folder project yang sudah dibuat. (Project harus menggunakan Livewire, bukan Inertia.)</li>
+                    <li>Pergi ke folder <span lang="en" class="code">app/Providers</span> kemudian buka file <span lang="en" class="code">JetstreamServiceProvider.php</span>.</li>
+                    <li>Kemudian tambahlan kode berikut di fungsi <span lang="en" class="code">boot</span>. <br>
+                        <span lang="en" class="code"><pre>
+Fortify::loginView(function () {
+    return view('auth.login');
+});
+
+Fortify::authenticateUsing(function (Request $request) {
+    $user = User::where('username', $request->username)
+                ->first();
+
+    if ($user && $request->password == $user->password) {
+        return $user;
+    }
+});</pre></span>
+                    </li>
+                    <li>Ganti username dengan atribut lain yang diinginkan. (Misal: NIK, NPWP)</li>
+                    <li>Kemudian pergi ke folder selanjutnya, yaitu <span lang="en" class="code">config</span>dan buka file <span lang="en" class="code">fortify.php</span>.</li>
+                    <li>Hapus instruksi berikut: <span lang="en" class="code">'email' => 'email',</span> dan ubah 'email' pada <span lang="en" class="code">'username' => 'email',</span>dengan variabel yang diinginkan.</li>
+                    <li>Lakukan juga perubahan name dan type dari input pada file <span lang="en" class="code">resources\views\auth\login.blade.php</span>.</li>
+                </ol></div>
+            </article>
+            
+        </div>
+        <aside id="profile" class="item">
+            <article class="profile card">
+                <header>
+                  <h2>Profile</h2>
+                  <p>Khaela Fortunela C038DSY0866</p>
+                  <figure>
+                    <img src="assets/images/profile-picture.png" />
+                    <figcaption>Foto Profile</figcaption>
+                  </figure>
+                </header>
+                <section class="table">
+                  <h3>Biodata</h3>
+                  <table>
+                    <tr>
+                      <th>Nama</th>
+                      <td>Khaela Fortunela</td>
+                    </tr>
+                    <tr>
+                      <th>Umur</th>
+                      <td>20 Tahun</td>
+                    </tr>
+                    <tr>
+                      <th>Universitas</th>
+                      <td>Insitut Teknologi Sepuluh Nopember</td>
+                    </tr>
+                    <tr>
+                      <th>Jurusan</th>
+                      <td>Teknik Informatika</td>
+                    </tr>
+                    <tr>
+                      <th>Learning Path</th>
+                      <td>Cloud Computing</td>
+                    </tr>
+                    <tr>
+                      <th>ID Bangkit</th>
+                      <td>C038DSY0866</td>
+                    </tr>
+                  </table>
+                </section>
+              </article>
+
+              <div id="gallery">
+                <div class="gallery card">
+                    <h1 class="underline">Gallery</h1><br>
+                    <div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-1.jpg" alt="gallery-1">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-2.jpg" alt="gallery-2">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-3.jpg" alt="gallery-3">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-4.jpg" alt="gallery-4">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-5.jpg" alt="gallery-5">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-6.jpg" alt="gallery-5">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-7.jpg" alt="gallery-5">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-8.jpg" alt="gallery-5">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-9.jpg" alt="gallery-5">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-10.jpg" alt="gallery-5">
+                        </div>
+                        <div class="gallery-item fade">
+                            <img src="assets\images\gallery-11.jpg" alt="gallery-5">
+                        </div>
+                        <div class="thumbnail-container">
+                            <div class="thumbnail-column">
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-1.jpg" style="object-position: left bottom;"onclick="showThis(1)"alt="gallery-1">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-2.jpg" style="object-position: left bottom;"onclick="showThis(2)"alt="gallery-2">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-3.jpg" style="object-position: left bottom;"onclick="showThis(3)"alt="gallery-3">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-4.jpg" style="object-position: left bottom;"onclick="showThis(4)"alt="gallery-4">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-5.jpg" style="object-position: left bottom;"onclick="showThis(5)"alt="gallery-5">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-6.jpg" style="object-position: left bottom;"onclick="showThis(6)"alt="gallery-6">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-7.jpg" style="object-position: left bottom;"onclick="showThis(7)"alt="gallery-7">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-8.jpg" style="object-position: left bottom;"onclick="showThis(8)"alt="gallery-8">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-9.jpg" style="object-position: left bottom;"onclick="showThis(9)"alt="gallery-9">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-10.jpg" style="object-position: left bottom;"onclick="showThis(10)"alt="gallery-10">
+                                </div>
+                                <div class="thumbnail-item fade">
+                                    <img src="assets\images\gallery-11.jpg" style="object-position: left bottom;"onclick="showThis(11)"alt="gallery-11">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        
+    </main>
+    
+    <footer>
+        <div><p>With <span style="color: red;">&hearts;</span>, by Fortunela.</p></div>
+    </footer>
+</body>
+
+<script>
+    let carouselcurr = 1;
+    displayCarousel(carouselcurr);
+
+    let gallerycurr = 6;
+    showGallery(gallerycurr);
+    function showThis(x){showGallery(gallerycurr = x);}
+
+    autoNext();
+    function displayNext(x){console.log("clicked");displayCarousel(carouselcurr += x);}
+    function displayThis(x){displayCarousel(carouselcurr = x);}
+
+    function displayCarousel(x){
+        let carousel_item = document.getElementsByClassName("carousel-item fade");
+        /* console.log(carousel_item[0]);
+        console.log(carousel_arr); */
+        carouselcount = carousel_item.length;
+        console.log("reached");
+        if(x > carouselcount) {carouselcurr = 1;}
+        else if(x < 1) {carouselcurr = carouselcount;}
+        for (i = 0; i < carouselcount; i++) {
+            carousel_item[i].style.display = "none";
+        }
+        
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        console.log(carousel_item);
+        carousel_item[carouselcurr-1].style.display = "block";
+        dots[carouselcurr-1].className += " active";
+    }
+
+    function autoNext() {
+        displayNext(1);
+        setTimeout(autoNext, 10000);
+    }
+
+    
+    function showGallery(x){
+        let gallery_item = document.getElementsByClassName("gallery-item fade");
+        gallerycount = gallery_item.length;
+        
+        if(x > gallerycount) {gallerycurr = 1;}
+        else if(x < 1) {gallerycurr = gallerycount;}
+        for (let i = 0; i < gallerycount; i++) {
+            gallery_item[i].style.display = "none";
+        }
+        
+        let thumb = document.getElementsByClassName("thumbnail-item");
+        for (let i = 0; i < thumb.length; i++) {
+            thumb[i].getElementsByTagName("img")[0].style.opacity = "0.5";
+            
+        }
+        console.log(gallerycurr);
+        gallery_item[gallerycurr-1].style.display = "block";
+        thumb[gallerycurr-1].getElementsByTagName("img")[0].style.opacity = "1.0";
+        //console.log(thumb[gallerycurr-1].getElementsByTagName("img")[0].opacity);
+    }
+
+
+</script>
+</html>
